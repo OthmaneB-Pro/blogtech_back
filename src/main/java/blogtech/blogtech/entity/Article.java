@@ -16,7 +16,7 @@ public class Article {
     private String content;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JoinColumn(name = "user_id")
     private User author;
 
