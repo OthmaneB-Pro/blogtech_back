@@ -5,6 +5,8 @@ import blogtech.blogtech.repository.CommentRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @AllArgsConstructor
 @Service
 public class CommentService {
@@ -14,5 +16,9 @@ public class CommentService {
 
     public void createComment(Comment comment){
         this.commentRepository.save(comment);
+    }
+
+    public List<Comment> allComment() {
+        return this.commentRepository.findAll();
     }
 }
