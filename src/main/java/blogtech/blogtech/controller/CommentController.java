@@ -9,18 +9,18 @@ import java.util.List;
 
 @AllArgsConstructor
 @RestController
-@RequestMapping(name = "articles/{id}/comments")
+@RequestMapping(name = "articles/{articleId}/comments")
 public class CommentController {
 
     private final CommentService commentService;
 
     @PostMapping
-    public void createComment(@RequestBody Comment comment){
-        this.commentService.createComment(comment);
+    public void createComment(@PathVariable int articleId, @RequestBody Comment comment){
+        this.commentService.createComment(articleId, comment);
     }
 
     @GetMapping
-    public List<Comment> allComment(){
+    public List<Comment> allComment(@PathVariable int articleId){
         return this.commentService.allComment();
     }
     @DeleteMapping(path = "{id}")

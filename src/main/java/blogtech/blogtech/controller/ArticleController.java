@@ -1,14 +1,12 @@
 package blogtech.blogtech.controller;
 
 import blogtech.blogtech.entity.Article;
-import blogtech.blogtech.entity.User;
 import blogtech.blogtech.service.ArticleService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @AllArgsConstructor
 @RestController

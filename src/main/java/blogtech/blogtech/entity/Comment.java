@@ -20,4 +20,5 @@ public class Comment {
     @JoinColumn(name = "article_id", nullable = false)
     private Article article;
     private LocalDateTime createdAt;
+
 }
