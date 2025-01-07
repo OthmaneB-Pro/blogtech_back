@@ -21,7 +21,7 @@ public class CommentController {
 
     @GetMapping
     public List<Comment> allComment(@PathVariable int articleId){
-        return this.commentService.allComment();
+        return this.commentService.getCommentsByArticle(articleId);
     }
     @DeleteMapping(path = "{id}")
     public void deleteComment(@PathVariable int id){

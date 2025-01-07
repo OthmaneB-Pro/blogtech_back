@@ -34,4 +34,9 @@ public class CommentService {
     public void deleteComment(int id) {
         this.commentRepository.deleteById(id);
     }
+
+    public List<Comment> getCommentsByArticle(int articleId) {
+        Article article = this.articleService.getArticleById(articleId);
+        return commentRepository.findByArticle(article);
+    }
 }
