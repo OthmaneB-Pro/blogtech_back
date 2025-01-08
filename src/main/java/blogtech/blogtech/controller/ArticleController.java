@@ -21,8 +21,13 @@ public class ArticleController {
     }
 
     @GetMapping(path = "{id}")
-    public Article getArticleById(@PathVariable int id){
+    public Article getArticleById(@PathVariable int id) {
         return this.articleService.getArticleById(id);
+    }
+
+    @GetMapping(path = "/search")
+    public List<Article> searchArticleByTitle(@RequestParam String keyword){
+        return this.articleService.searchArticles(keyword);
     }
 
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)

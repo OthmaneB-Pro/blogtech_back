@@ -60,4 +60,7 @@ public class ArticleService {
          * **/
     }
 
+    public List<Article> searchArticles(String keyword) {
+        return this.articleRepository.findByTitleContainingIgnoreCase(keyword);
+    }
 }
