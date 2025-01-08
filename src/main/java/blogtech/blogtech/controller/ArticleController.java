@@ -3,6 +3,9 @@ package blogtech.blogtech.controller;
 import blogtech.blogtech.entity.Article;
 import blogtech.blogtech.service.ArticleService;
 import lombok.AllArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
@@ -26,8 +29,10 @@ public class ArticleController {
     }
 
     @GetMapping(path = "/search")
-    public List<Article> searchArticleByTitle(@RequestParam String keyword){
-        return this.articleService.searchArticles(keyword);
+    public Page<Article> searchArticle(@RequestParam String keyword, @RequestParam(defaultValue = "0") int page, @RequestParam(defaultValue = "10") int size)
+    {
+        Pageable pageable = PageRequest.of(page, size);
+        return articleService.searchArticles(keyword, pageable);
     }
 
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)

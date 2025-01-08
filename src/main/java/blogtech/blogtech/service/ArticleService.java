@@ -4,6 +4,8 @@ import blogtech.blogtech.entity.Article;
 import blogtech.blogtech.entity.User;
 import blogtech.blogtech.repository.ArticleRepository;
 import lombok.AllArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -60,7 +62,7 @@ public class ArticleService {
          * **/
     }
 
-    public List<Article> searchArticles(String keyword) {
-        return this.articleRepository.findByTitleContainingIgnoreCase(keyword);
+    public Page<Article> searchArticles(String keyword, Pageable pageable) {
+        return this.articleRepository.findByTitleContainingIgnoreCase(keyword, pageable);
     }
 }
