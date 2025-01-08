@@ -29,6 +29,7 @@ public class ConfigSecurityApp {
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/user/**").permitAll()
                         .requestMatchers(HttpMethod.GET, "/article").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/articles/{articleId}/comments").permitAll()
                         .anyRequest().authenticated()
                 )
                .addFilterBefore(jwtRequestFilter, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter.class);
